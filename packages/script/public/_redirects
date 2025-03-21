@@ -1,0 +1,2 @@
+# Redirect all paths except /analytics/* to docs
+/analytics/* /analytics/:splat 200

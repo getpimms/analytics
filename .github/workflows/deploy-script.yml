@@ -1,0 +1,28 @@
+name: Deploy Analytics Script to Cloudflare Pages
+
+on:
+  push:
+    paths:
+      - 'packages/script/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Install Dependencies and Build
+        run: pnpm --filter @pimms/analytics-script build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_KEY }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=pimms-cdn --commit-dirty=true
+          workingDirectory: packages/script
+          packageManager: pnpm
