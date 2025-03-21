@@ -24,12 +24,12 @@ jobs:
       - name: build
         run: pnpm --filter @getpimms/analytics build
 
-      - run: pnpm --filter @getpimms/analytics publish --tag beta --no-git-checks
+      - run: pnpm --filter @getpimms/analytics publish --tag beta --no-git-checks --access public
         if: github.event.release.prerelease == true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: pnpm --filter @getpimms/analytics publish --no-git-checks
+      - run: pnpm --filter @getpimms/analytics publish --no-git-checks --access public
         if: github.event.release.prerelease == false
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

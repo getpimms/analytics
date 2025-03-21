@@ -1,6 +1,6 @@
 {
   "name": "@getpimms/analytics",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "",
   "keywords": [
     "analytics",
@@ -39,6 +39,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "changeset": "pnpm version patch --no-script",
     "dev": "tsup --watch",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
@@ -63,5 +64,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "7.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

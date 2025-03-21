@@ -30,7 +30,7 @@
   }
   ```
   
-  You can all use the `inject()` function to add the tracking script to other frameworks.
+You can all use the `inject()` function to add the tracking script to other frameworks.
 
 ## Available Props
 
@@ -44,13 +44,8 @@ The API host to use for tracking. This is useful for setting up reverse proxies 
 
 This is a JSON object that configures the domains that PIMMS will track.
 
-- `refer`: The PIMMS short domain for [referral program client-side click tracking](https://d.to/clicks/refer) (previously `shortDomain`).
-- `site`: The PIMMS short domain for [tracking site visits](https://d.to/clicks/site).
+- `site`: The PIMMS short domain for tracking site visits.
 - `outbound`: An array of domains for cross-domain tracking. When configured, the existing `pimms_id` cookie will be automatically appended to all outbound links targeting these domains to enable cross-domain tracking across different applications.
-
-### `shortDomain`
-
-[DEPRECATED: use `domainsConfig.refer` instead] The custom short domain you're using on PIMMS for your short links (for client-side click tracking).
 
 ### `attributionModel`
 

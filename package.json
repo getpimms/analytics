@@ -1,9 +1,5 @@
 {
   "name": "analytics",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/getpimms/analytics.git"
-  },
   "license": "MPL-2.0",
   "scripts": {
     "prepare": "husky install"
