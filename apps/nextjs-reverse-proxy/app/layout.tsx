@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Analytics as PimmsAnalytics } from '@pimms/analytics/react';
+import { Analytics as PimmsAnalytics } from '@getpimms/analytics/react';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });

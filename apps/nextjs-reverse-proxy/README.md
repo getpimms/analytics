@@ -1,12 +1,12 @@
 # PIMMS Analytics with Client-side Click Tracking + Reverse Proxy
 
-This example shows you how you can use the `@pimms/analytics` package with:
+This example shows you how you can use the `@getpimms/analytics` package with:
 
 - Client-side click tracking for tracking clicks with query parameters in lieu of short links
 - A reverse proxy to avoid getting blocked by ad blockers
 
 ```ts app/layout.tsx
-import { Analytics as PimmsAnalytics } from '@pimms/analytics/react';
+import { Analytics as PimmsAnalytics } from '@getpimms/analytics/react';
 
 export default function RootLayout({
   children,

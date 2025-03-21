@@ -1,20 +1,20 @@
 ## Overview
 
-`@pimms/analytics` allows you to track leads and sales conversions for PIMMS.
+`@getpimms/analytics` allows you to track leads and sales conversions for PIMMS.
 
 ## Quick start
 
   1. Enable conversion tracking for your PIMMS link.
-  2. Install the `@pimms/analytics` package to your project
+  2. Install the `@getpimms/analytics` package to your project
 
   ```bash
-  npm install @pimms/analytics
+  npm install @getpimms/analytics
   ```
 
   3. Inject the Analytics script to your app
 
   ```tsx
-  import { Analytics as PimmsAnalytics } from '@pimms/analytics/react';
+  import { Analytics as PimmsAnalytics } from '@getpimms/analytics/react';
 
   export default function RootLayout({
     children,
@@ -73,7 +73,7 @@ The `cookieOptions` prop accepts the following keys:
 For example, to set a 60-day cookie window, you can use the following code:
 
 ```tsx
-import { Analytics as PimmsAnalytics } from "@pimms/analytics"
+import { Analytics as PimmsAnalytics } from "@getpimms/analytics"
 
 <PimmsAnalytics
    cookieOptions={{

@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "pnpm --filter @pimms/analytics... build && next build",
+    "build": "pnpm --filter @getpimms/analytics... build && next build",
     "dev": "next dev",
     "start": "next start"
   },
   "dependencies": {
-    "@pimms/analytics": "workspace:*",
+    "@getpimms/analytics": "workspace:*",
     "cookie": "^0.6.0",
     "next": "14.1.0",
     "react": "^18",

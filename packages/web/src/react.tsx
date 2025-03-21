@@ -6,7 +6,7 @@ import type { AnalyticsProps } from './types';
  * Injects the PIMMS Web Analytics script into the page head.
  * @param props - Analytics options.
  * ```js
- * import { Analytics as PimmsAnalytics } from '@pimms/analytics/react';
+ * import { Analytics as PimmsAnalytics } from '@getpimms/analytics/react';
  *
  * export default function App() {
  *  return (
