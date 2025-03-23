@@ -1,86 +1,137 @@
+# @getpimms/analytics
+
+Easily track and optimize your lead and sales conversions using PIMMS across multiple channels and applications.
+
 ## Overview
 
-`@getpimms/analytics` allows you to track leads and sales conversions for PIMMS.
+`@getpimms/analytics` provides a streamlined way to implement conversion tracking on your site or application, helping you identify exactly what generates your leads and conversions.
 
-## Quick start
+## Quick Start
 
-  1. Enable conversion tracking for your PIMMS link.
-  2. Install the `@getpimms/analytics` package to your project
+Follow these steps to quickly integrate PIMMS analytics:
 
-  ```bash
-  npm install @getpimms/analytics
-  ```
+### 1. Enable Conversion Tracking
 
-  3. Inject the Analytics script to your app
+Activate conversion tracking for your PIMMS links via the [PIMMS dashboard](https://app.pimms.io).
 
-  ```tsx
-  import { Analytics as PimmsAnalytics } from '@getpimms/analytics/react';
+### 2. Install the Analytics Package
 
-  export default function RootLayout({
-    children,
-  }: Readonly<{
-    children: React.ReactNode;
-  }>) {
-    return (
-      <html lang="en">
-        <body>{children}</body>
-        <PimmsAnalytics />
-      </html>
-    );
-  }
-  ```
-  
-You can all use the `inject()` function to add the tracking script to other frameworks.
+Add the `@getpimms/analytics` package to your project:
+
+```bash
+npm install @getpimms/analytics
+```
+
+### 3. Inject the Analytics Script
+
+Integrate the tracking script into your application:
+
+**React Example:**
+
+```tsx
+import { Analytics as PimmsAnalytics } from '@getpimms/analytics/react';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+      <PimmsAnalytics />
+    </html>
+  );
+}
+```
+
+Alternatively, for other frameworks, use the `inject()` method.
 
 ## Available Props
 
-You can pass the following props to the `Analytics` component to customize the tracking script.
+Customize the analytics script by passing props to the `Analytics` component:
 
 ### `apiHost`
 
-The API host to use for tracking. This is useful for setting up reverse proxies to avoid adblockers. The default is `https://api.pimms.io`.
+Defines a custom API host for tracking requests. Useful when using reverse proxies to bypass ad-blockers.
+
+- **Default:** `https://api.pimms.io`
 
 ### `domainsConfig`
 
-This is a JSON object that configures the domains that PIMMS will track.
+Configure domains for accurate tracking:
 
-- `site`: The PIMMS short domain for tracking site visits.
-- `outbound`: An array of domains for cross-domain tracking. When configured, the existing `pimms_id` cookie will be automatically appended to all outbound links targeting these domains to enable cross-domain tracking across different applications.
+```tsx
+<PimmsAnalytics
+  domainsConfig={{
+    site: "pim.ms",
+    outbound: ["yourdomain.com", "anotherdomain.com"],
+  }}
+/>
+```
+
+- `site`: Short domain provided by PIMMS.
+- `outbound`: Array of domains enabling cross-domain tracking.
 
 ### `attributionModel`
 
-Decide the attribution model to use for tracking. The default is `last-click`.
+Defines which touchpoint receives conversion credit:
 
-- `first-click` - The first click model gives all the credit to the first touchpoint in the customer journey.
-- `last-click` - The last click model gives all the credit to the last touchpoint in the customer journey.
+- **Default:** `last-click`
+
+Available options:
+- `first-click`: Credits the initial user interaction.
+- `last-click`: Credits the final user interaction.
+
+Example:
+
+```tsx
+<PimmsAnalytics attributionModel="first-click" />
+```
 
 ### `cookieOptions`
 
-The `cookieOptions` prop accepts the following keys:
+Customize the cookie behavior for tracking:
 
-| Key   | Default | Description | Example |
-|----------|---------|-------------|---------|
-| `domain` | `null` | Specifies the value for the `Domain` Set-Cookie attribute. | `example.com` |
-| `expires` | 90 days from now | Specifies the `Date` object to be the value for the `Expires` Set-Cookie attribute. | `new Date('2024-12-31')` |
-| `expiresInDays` | `90` | Specifies the number (in days) to be the value for the `Expires` Set-Cookie attribute. | `90` |
-| `path` | `/` | Specifies the value for the `Path` Set-Cookie attribute. By default, the path is considered the "default path". | `/` |
+| Key             | Default             | Description                                                  | Example                   |
+|-----------------|---------------------|--------------------------------------------------------------|---------------------------|
+| `domain`        | `null`              | Domain scope of the cookie                                   | `example.com`             |
+| `expires`       | 90 days from now    | Explicit expiry date                                         | `new Date('2024-12-31')`  |
+| `expiresInDays` | `90`                | Number of days before the cookie expires                     | `60`                      |
+| `path`          | `/`                 | URL path the cookie applies to                               | `/`                       |
 
-For example, to set a 60-day cookie window, you can use the following code:
+Example (set a 60-day cookie lifespan):
 
 ```tsx
-import { Analytics as PimmsAnalytics } from "@getpimms/analytics"
-
-<PimmsAnalytics
-   cookieOptions={{
-      expiresInDays: 60,
-   }}
-/>
+<PimmsAnalytics cookieOptions={{ expiresInDays: 60 }} />
 ```
 
 ### `queryParam`
 
-The query parameter to listen to for client-side click-tracking (e.g. `?via=john`, `?ref=jane`). The default is `via`.
+Specifies the URL parameter to use for tracking (e.g., referral codes):
+
+- **Default:** `via`
+
+Example:
+
+```
+?ref=john_doe
+```
+
+To use `ref` instead of the default:
+
+```tsx
+<PimmsAnalytics queryParam="ref" />
+```
 
 ### `scriptProps`
 
-Custom properties to pass to the script tag. Refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement) for all available options.
+Custom attributes for the injected `<script>` tag. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement) for all available options.
+
+Example:
+
+```tsx
+<PimmsAnalytics scriptProps={{ defer: true }} />
+```
+
+## Next Steps
+
+[Sign up for PIMMS today →](https://app.pimms.io/register)
+
+[Introduction to conversion tracking | blog →](https://pimms.io/blog/introducing-conversion-tracking)
