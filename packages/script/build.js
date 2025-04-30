@@ -76,4 +76,30 @@ Promise.all([
     },
     outfile: 'dist/analytics/script.site-visit.outbound-domains.js',
   }),
+
+  // Detect IDs + support embed
+  esbuild.build({
+    ...baseConfig,
+    stdin: {
+      contents: combineFiles([
+        'src/base.js',
+        'src/extensions/detect-ids.js',
+        'src/extensions/support-embed.js',
+      ]),
+      resolveDir: __dirname,
+      sourcefile: 'combined.js',
+    },
+    outfile: 'dist/analytics/script.detection.js',
+  }),
+
+  // Expose ids: independent of the script
+  esbuild.build({
+    ...baseConfig,
+    stdin: {
+      contents: fs.readFileSync('src/extensions/expose-ids.js', 'utf8'),
+      resolveDir: __dirname,
+      sourcefile: 'base.js',
+    },
+    outfile: 'dist/analytics/script.expose.js',
+  }),
 ]).catch(() => process.exit(1));
