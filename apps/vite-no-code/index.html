@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pimms - Simple & Powerful URL Shortener</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="module">
+      const isDev = location.hostname === 'localhost';
+      const script = document.createElement('script');
+      script.defer = true;
+      script.src = isDev
+        ? '/@fs/Users/sarfati/workspace/analytics/packages/script/dist/analytics/script.detection.js'
+        : 'https://assets.pimms.io/analytics/script.detection.js';
+      document.head.appendChild(script);
+
+      const script2 = document.createElement('script');
+      script2.src = isDev
+        ? '/@fs/Users/sarfati/workspace/analytics/packages/script/dist/analytics/script.expose.js'
+        : 'https://assets.pimms.io/analytics/script.expose.js';
+      document.head.appendChild(script2);
+    </script>
+
+    <script type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) {
+          a.q.push(ar);
+        };
+        let d = C.document;
+        C.Cal =
+          C.Cal ||
+          function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement('script')).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === 'string') {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ['initNamespace', namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+      })(window, 'https://app.cal.com/embed/embed.js', 'init');
+      Cal('init', '30min', { origin: 'https://cal.com' });
+      Cal.ns['30min']('ui', {
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+      // Cal.ns["30min"]("inline", {
+      //   elementOrSelector: "#my-cal-inline",
+      //   config: { "layout": "month_view" },
+      //   calLink: `alexandre-sarfati-pidjvv/30min?pimms_id=${window.pimms_id}`,
+      // });
+      window.Cal = Cal;
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
