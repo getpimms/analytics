@@ -18,13 +18,13 @@
       script.defer = true;
       script.src = isDev
         ? '/@fs/Users/sarfati/workspace/analytics/packages/script/dist/analytics/script.detection.js'
-        : 'https://assets.pimms.io/analytics/script.detection.js';
+        : 'https://cdn.pimms.io/analytics/script.detection.js';
       document.head.appendChild(script);
 
       const script2 = document.createElement('script');
       script2.src = isDev
         ? '/@fs/Users/sarfati/workspace/analytics/packages/script/dist/analytics/script.expose.js'
-        : 'https://assets.pimms.io/analytics/script.expose.js';
+        : 'https://cdn.pimms.io/analytics/script.expose.js';
       document.head.appendChild(script2);
     </script>
 

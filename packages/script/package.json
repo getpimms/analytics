@@ -1,6 +1,6 @@
 {
   "name": "@getpimms/analytics-script",
-  "version": "0.0.27",
+  "version": "0.0.31",
   "main": "src/index.js",
   "files": [
     "dist/analytics/script.js",

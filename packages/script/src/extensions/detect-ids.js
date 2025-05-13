@@ -57,9 +57,11 @@
 
   function init() {
     const cookie = getHighestPriorityCookie(COOKIE_PRIORITY);
-    if (!cookie) return;
+    if (!cookie) {
+      return;
+    }
 
-    console.log(`[PIMMS] ${cookie.name} found:`, cookie.value);
+    console.log(`[PIMMS] [links] Using ${cookie.name}:`, cookie.value);
     updateLinks(cookie.value);
 
     const observer = new MutationObserver(() => debouncedUpdate(cookie.value));

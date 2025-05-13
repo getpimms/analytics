@@ -102,4 +102,15 @@ Promise.all([
     },
     outfile: 'dist/analytics/script.expose.js',
   }),
+
+  // Inject form: independent of the script
+  esbuild.build({
+    ...baseConfig,
+    stdin: {
+      contents: fs.readFileSync('src/extensions/inject-form.js', 'utf8'),
+      resolveDir: __dirname,
+      sourcefile: 'base.js',
+    },
+    outfile: 'dist/analytics/script.inject-form.js',
+  }),
 ]).catch(() => process.exit(1));
