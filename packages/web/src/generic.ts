@@ -8,6 +8,14 @@ import { isBrowser } from './utils';
 function inject(props: AnalyticsProps): void {
   if (!isBrowser()) return;
 
+  // Inject meta tag for SDK detection
+  if (!document.head.querySelector('meta[name="pimms-sdk"]')) {
+    const meta = document.createElement('meta');
+    meta.name = 'pimms-sdk';
+    meta.content = 'true';
+    document.head.appendChild(meta);
+  }
+
   // Determine script source based on enabled features
   const baseUrl = 'https://cdn.pimms.io/analytics/script';
   const features = [];
