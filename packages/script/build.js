@@ -83,6 +83,7 @@ Promise.all([
     stdin: {
       contents: combineFiles([
         'src/base.js',
+        'src/extensions/outbound-domains.js',
         'src/extensions/detect-ids.js',
         'src/extensions/support-embed.js',
       ]),

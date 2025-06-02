@@ -9,6 +9,10 @@
       match: 'pimms_id=1',
       replace: (id) => `pimms_id=${id}`,
     },
+    {
+      match: 'utm_term=1',
+      replace: (id) => `utm_term=${id}`,
+    },
   ];
 
   let debounceTimer = null;

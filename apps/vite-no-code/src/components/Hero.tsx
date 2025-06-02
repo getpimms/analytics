@@ -50,12 +50,15 @@ const Hero: React.FC = () => {
               Get Pro Plan Now
               <ExternalLink className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
+            <Button size="lg" variant="outline" href="https://app.pimms.io">
+              Try For Free
+            </Button>
             <Button
               size="lg"
               variant="outline"
-              href="https://app.pimms.io?pimms_id=1"
+              href="https://app.iclosed.io/e/alexandresarfati/30-minutes-call?utm_term=1"
             >
-              Try For Free
+              Book a call (iClosed)
             </Button>
           </div>
 
